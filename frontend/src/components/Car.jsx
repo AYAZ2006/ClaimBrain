@@ -160,23 +160,17 @@ function Car() {
             </motion.div>
           )}
           {isProcessing && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="m-8 rounded-2xl bg-gray-50 border border-gray-200 p-8">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                  <CheckCircle2 size={28} className="text-white"/>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-md">
+            <div className="w-[90%] max-w-md rounded-3xl bg-white p-10 shadow-2xl text-center">
+              <div className="flex justify-center mb-6"><div className="w-16 h-16 border-[5px] border-pink-200 border-t-pink-500 rounded-full animate-spin"></div></div>
+              <h2 className="text-2xl font-bold text-gray-900">ClaimBrain AI</h2>
+              <p className="mt-3 text-gray-600">Analyzing your insurance policy...</p>
+              <p className="text-sm text-gray-400 mt-2">Extracting vehicle details, owner information and policy data.</p>
+                <div className="flex justify-center gap-2 mt-8">
+                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce"></span>
+                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce" style={{ animationDelay: "0.15s" }}></span>
+                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce" style={{ animationDelay: "0.3s" }}></span>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-black">AI is understanding your policy...</h2>
-                  <p className="text-gray-600 mt-1">Extracting important information from your insurance document.</p>
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4 mt-8">
-                <div className="bg-white rounded-xl p-4 border">✅ Reading PDF Pages</div>
-                <div className="bg-white rounded-xl p-4 border">✅ Understanding Layout</div>
-                <div className="bg-white rounded-xl p-4 border">✅ Detecting Vehicle Details</div>
-                <div className="bg-white rounded-xl p-4 border">✅ Detecting Owner Information</div>
-                <div className="bg-white rounded-xl p-4 border">✅ Finding Policy Information</div>
-                <div className="bg-white rounded-xl p-4 border">✅ Generating Structured JSON</div>
               </div>
             </motion.div>
           )}
