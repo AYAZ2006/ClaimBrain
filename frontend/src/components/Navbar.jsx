@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl">
       <div className="relative">
         <div className="flex items-center justify-between rounded-full border border-gray-300/60 bg-gray-100/80 backdrop-blur-2xl shadow-md px-5 sm:px-7 lg:px-8 py-3">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">Claim<span className="text-pink-500">Brain</span></h1>
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 cursor-pointer" onClick={() => window.location.href = '/'}>Claim<span className="text-pink-500">Brain</span></h1>
           <ul className="hidden lg:flex items-center gap-8 text-[15px] font-medium text-gray-700">
             <li className="hover:text-black transition"><a href="/">Home</a></li>
             <li className="hover:text-black transition"><a href="/features">Features</a></li>

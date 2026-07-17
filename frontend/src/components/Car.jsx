@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { parsePolicy } from "../utils/openai";
-
+import AILoader from "./AILoader";
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 function Car() {
@@ -37,16 +37,23 @@ function Car() {
           return;
         }
         setIsProcessing(true);
-        try {
-          const parsed = await parsePolicy(fullText);
-          console.log(parsed);
-          setPolicyData(parsed);
-        } catch (err) {
-          console.error(err);
-          alert("Unable to understand this policy.");
-        } finally {
-          setIsProcessing(false);
-        }
+      const minimumLoaderTime = 10000;
+      const startTime = Date.now();
+      try {
+        const parsed = await parsePolicy(fullText);
+        const elapsed = Date.now() - startTime;
+        const remainingTime = Math.max(0, minimumLoaderTime - elapsed);
+        if (remainingTime > 0) {await new Promise((resolve) => setTimeout(resolve, remainingTime));}
+        console.log(parsed);
+        setPolicyData(parsed);
+      } catch (err) {
+        const elapsed = Date.now() - startTime;
+        const remainingTime = Math.max(0, minimumLoaderTime - elapsed);
+        if (remainingTime > 0) {await new Promise((resolve) => setTimeout(resolve, remainingTime));}
+        alert("Unable to understand this policy.");
+      } finally {
+        setIsProcessing(false);
+      }
       } catch (err) {
         console.error(err);
         alert("Unable to read PDF.");
@@ -159,21 +166,7 @@ function Car() {
               </div>
             </motion.div>
           )}
-          {isProcessing && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-md">
-            <div className="w-[90%] max-w-md rounded-3xl bg-white p-10 shadow-2xl text-center">
-              <div className="flex justify-center mb-6"><div className="w-16 h-16 border-[5px] border-pink-200 border-t-pink-500 rounded-full animate-spin"></div></div>
-              <h2 className="text-2xl font-bold text-gray-900">ClaimBrain AI</h2>
-              <p className="mt-3 text-gray-600">Analyzing your insurance policy...</p>
-              <p className="text-sm text-gray-400 mt-2">Extracting vehicle details, owner information and policy data.</p>
-                <div className="flex justify-center gap-2 mt-8">
-                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce"></span>
-                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce" style={{ animationDelay: "0.15s" }}></span>
-                  <span className="w-3 h-3 rounded-full bg-pink-500 animate-bounce" style={{ animationDelay: "0.3s" }}></span>
-                </div>
-              </div>
-            </motion.div>
-          )}
+          {isProcessing && <AILoader />}
           {Object.keys(policyData).length > 0 && (
             <div className="mx-8 mt-8 rounded-xl bg-gray-50 border border-gray-200 p-5">
               <h2 className="text-2xl font-bold text-black">✅ Policy Successfully Parsed</h2>
