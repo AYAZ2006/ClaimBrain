@@ -20,7 +20,7 @@ function Hero() {
           <img src="/guy.921bc398.svg" alt="" className="absolute bottom-[-8px] left-10"/>
         </div>
       </div>
-      <section className="bg-[#F7F7F7] py-16 md:py-24 lg:py-28 px-5">
+      <section className="bg-[#F7F7F7] py-16 md:py-24 lg:py-28 px-5 mt-10">
         <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold text-[#454545] leading-tight">AI Powered<br />Claim Approval Assistant.</h1>
         <p className="text-center text-lg md:text-xl lg:text-2xl text-gray-600 mt-5 max-w-4xl mx-auto">Verify eligibility, upload documents, and receive intelligent claim assessments in minutes.</p>
         <div className="mt-14 md:mt-20 flex justify-center gap-6 flex-wrap">
