@@ -174,8 +174,8 @@ function ClaimVerify() {
             <CaptureCard title="Right Side" side="right"/>
           </div>
           <div className="mt-10 flex justify-end gap-4">
-            <button className="px-6 py-3 border rounded-xl hover:bg-gray-100">Back</button>
-            <button disabled={!completed} className={`px-8 py-3 rounded-xl font-semibold transition ${completed ? "bg-black text-white hover:bg-gray-800" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}>Continue →</button>
+            <button className="px-6 py-3 border rounded-xl hover:bg-gray-100" onClick={() => window.history.back()}>Back</button>
+            <button disabled={!completed} className={`px-8 py-3 rounded-xl font-semibold transition ${completed ? "bg-black text-white hover:bg-gray-800" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`} onClick={() => window.location.href = "/parts"}>Continue →</button>
           </div>
         </div>
       </div>

@@ -104,10 +104,11 @@ function Car() {
     if (!policyData.startDate || !policyData.endDate) return false;
     try {
       const parseDate = (dateStr) => {
-      const [day, month, year] = dateStr.trim().split("-");
-      const months = {jan: 0,feb: 1,mar: 2,apr: 3,may: 4,jun: 5,jul: 6,aug: 7,sep: 8,oct: 9,nov: 10,dec: 11,};
-      return new Date(Number(year),months[month.toLowerCase()],Number(day));
-    };
+        const cleaned = dateStr.replace(/\(.*?\)/g, "").trim();
+        const [day, month, year] = cleaned.split("-");
+        const months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11,};
+        return new Date(Number(year),months[month.toLowerCase()],Number(day));
+      };
       const start = parseDate(policyData.startDate);
       const end = parseDate(policyData.endDate);
       const today = new Date();

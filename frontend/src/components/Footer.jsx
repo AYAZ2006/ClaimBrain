@@ -9,20 +9,20 @@ function Footer() {
             <div>
               <h3 className="text-sm font-bold uppercase mb-6">Product</h3>
               <ul className="space-y-4 text-gray-300">
-                <li className="hover:text-white cursor-pointer">Home</li>
-                <li className="hover:text-white cursor-pointer">Features</li>
-                <li className="hover:text-white cursor-pointer">How It Works</li>
-                <li className="hover:text-white cursor-pointer">Pricing</li>
-                <li className="hover:text-white cursor-pointer">FAQ</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/'}>Home</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/features'}>Features</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/about'}>How It Works</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/about'}>Pricing</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/about'}>FAQ</li>
               </ul>
             </div>
             <div>
               <h3 className="text-sm font-bold uppercase mb-6">Claims</h3>
               <ul className="space-y-4 text-gray-300">
-                <li className="hover:text-white cursor-pointer">Health Insurance</li>
-                <li className="hover:text-white cursor-pointer">Home Insurance</li>
-                <li className="hover:text-white cursor-pointer">Vehicle Insurance</li>
-                <li className="hover:text-white cursor-pointer">Life Insurance</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/life'}>Health Insurance</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/home'}>Home Insurance</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/car'}>Vehicle Insurance</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/life'}>Life Insurance</li>
               </ul>
             </div>
             <div>
@@ -38,10 +38,10 @@ function Footer() {
             <div>
               <h3 className="text-sm font-bold uppercase mb-6">Company</h3>
               <ul className="space-y-4 text-gray-300">
-                <li className="hover:text-white cursor-pointer">About Us</li>
-                <li className="hover:text-white cursor-pointer">Our Team</li>
-                <li className="hover:text-white cursor-pointer">Careers</li>
-                <li className="hover:text-white cursor-pointer">Terms of Service</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/about'}>About Us</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/about'}>Our Team</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/'}>Careers</li>
+                <li className="hover:text-white cursor-pointer" onClick={() => window.location.href = '/'}>Terms of Service</li>
               </ul>
             </div>
           </div>

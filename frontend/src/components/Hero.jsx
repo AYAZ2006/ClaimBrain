@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 const cards = [
@@ -11,14 +12,14 @@ function Hero() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <div className="hidden lg:flex justify-between items-end px-12 pt-32 mt-24">
-        <div className="relative w-fit -left-12">
-          <img src="/home-left.2fe38685.svg" alt="" />
-          <img src="/car.fd95efa5.svg" alt="" className="absolute bottom-[-8px] left-10"/>
-        </div>
-        <div className="relative w-fit -right-12">
-          <img src="/home-right.2fe2559b.svg" alt="" />
-          <img src="/guy.921bc398.svg" alt="" className="absolute bottom-[-8px] left-10"/>
-        </div>
+        <motion.div className="relative w-fit -left-12" initial={{ opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{duration: 1.8,ease: [0.16, 1, 0.3, 1]}}>
+          <img src="/home-left.2fe38685.svg" alt=""/>
+          <motion.img src="/car.fd95efa5.svg" className="absolute bottom-[-8px] left-10" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{delay: 0.6,duration: 1.5,ease: [0.16, 1, 0.3, 1]}}/>
+        </motion.div>
+        <motion.div className="relative w-fit -right-12" initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{duration: 1.8,ease: [0.16, 1, 0.3, 1]}}>
+          <img src="/home-right.2fe2559b.svg" alt=""/>
+          <motion.img src="/guy.921bc398.svg" className="absolute bottom-[-8px] left-10" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{delay: 0.6,duration: 1.5,ease: [0.16, 1, 0.3, 1]}}/>
+        </motion.div>
       </div>
       <section className="bg-[#F7F7F7] py-16 md:py-24 lg:py-28 px-5 mt-10">
         <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold text-[#454545] leading-tight">AI Powered<br />Claim Approval Assistant.</h1>

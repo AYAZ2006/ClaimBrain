@@ -60,6 +60,12 @@ Extract
   "phone":"",
   "email":""
 }
+Rules:
+1. startDate = earliest policy start date mentioned.
+2. endDate = LATEST expiry/end date found anywhere in the policy.
+3. If multiple expiry dates exist (Own Damage, Third Party, Motor Liability, Add-on, etc.), ALWAYS choose the date that is furthest in the future as endDate.
+4. Never choose the first expiry date if a later expiry date exists.
+5. Keep dates exactly as written in the policy.
 
 Policy:
 

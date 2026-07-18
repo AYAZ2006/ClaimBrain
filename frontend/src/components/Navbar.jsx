@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [claimsOpen, setClaimsOpen] = useState(false);
@@ -21,9 +21,18 @@ function Navbar() {
                 </div>
               </div>
             </li>
-            <li className="hover:text-black transition cursor-pointer">About</li>
+            <li className="hover:text-black transition cursor-pointer" onClick={() => window.location.href = '/about'}>About</li>
           </ul>
-          <button className="hidden lg:block rounded-full bg-pink-500 px-5 py-2 text-sm font-semibold text-white hover:bg-pink-600 transition">Get Started</button>
+          <div className="hidden lg:flex items-center">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="rounded-full bg-pink-500 px-5 py-2 text-sm font-semibold text-white hover:bg-pink-600 transition cursor-pointer">Get Started</button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton appearance={{elements: {avatarBox: "w-12 h-12"}}}/>
+            </SignedIn>
+          </div>
           <button className="lg:hidden text-3xl text-gray-800" onClick={() => setOpen(!open)}><i className={open ? "ri-close-line" : "ri-menu-line"}></i></button>
         </div>
         <div className={`lg:hidden absolute top-full left-0 right-0 mt-3 transition-all duration-300 ${open ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-3 invisible"}`}>
