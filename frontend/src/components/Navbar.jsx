@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [claimsOpen, setClaimsOpen] = useState(false);
+  const { user } = useUser();
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl">
       <div className="relative">
@@ -47,7 +48,26 @@ function Navbar() {
               <a href="/life" className="block pl-10 pr-5 py-3 hover:bg-gray-100" onClick={() => setOpen(false)}>Term Life Insurance</a>
             </div>
             <a href="/about" className="block px-5 py-4 hover:bg-gray-100" onClick={() => setOpen(false)}>About</a>
-            <div className="p-4"><button className="w-full rounded-full bg-pink-500 py-3 text-white font-semibold hover:bg-pink-600 transition">Get Started</button></div>
+            <div className="p-4">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="w-full rounded-full bg-pink-500 py-3 text-white font-semibold hover:bg-pink-600 transition" onClick={() => setOpen(false)}>Get Started</button></SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <div className="px-4">
+                  <div className="flex items-center justify-between rounded-full bg-gray-100 border border-gray-200 px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <img src={user?.imageUrl} className="w-10 h-10 rounded-full" alt="profile"/>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">{user?.firstName}</p>
+                        <p className="text-xs text-gray-500">{user?.primaryEmailAddress?.emailAddress}</p>
+                      </div>
+                    </div>
+                    <UserButton appearance={{elements:{avatarBox:"hidden"}}}/>
+                  </div>
+                </div>
+              </SignedIn>
+            </div>
           </div>
         </div>
       </div>
