@@ -11,6 +11,7 @@ import Parts from './components/Parts'
 import Coverage from './components/Coverage'
 import About from './components/About'
 import ProtectedRoute from "./components/ProtectedRoute"
+import History from './components/History'
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/features" element={<Features />} />
         <Route path="/parts" element={<ProtectedRoute><Parts /></ProtectedRoute>} />
         <Route path="/coverage" element={<ProtectedRoute><Coverage /></ProtectedRoute>} />
+        <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
         <Route path="/about" element={<About />} />
       </Routes>
     </>

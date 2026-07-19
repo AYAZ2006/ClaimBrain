@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { History, Car, User, LayoutDashboard } from "lucide-react";
+import axios from "axios";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [claimsOpen, setClaimsOpen] = useState(false);
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
+  useEffect(() => {
+    if (!isLoaded || !user) return;
+    const saveUser = async () => {
+      try { await axios.post("http://127.0.0.1:8000/save-user/", {email: user.primaryEmailAddress?.emailAddress,});
+      } catch (error) {
+        console.error("Error saving user:", error);
+      }
+    };
+    saveUser();
+  }, [isLoaded, user]);
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl">
       <div className="relative">
@@ -26,12 +38,14 @@ function Navbar() {
           </ul>
           <div className="hidden lg:flex items-center">
             <SignedOut>
-              <SignInButton mode="modal">
-                <button className="rounded-full bg-pink-500 px-5 py-2 text-sm font-semibold text-white hover:bg-pink-600 transition cursor-pointer">Get Started</button>
-              </SignInButton>
+              <SignInButton mode="modal"><button className="rounded-full bg-pink-500 px-5 py-2 text-sm font-semibold text-white hover:bg-pink-600 transition cursor-pointer">Get Started</button></SignInButton>
             </SignedOut>
             <SignedIn>
-              <UserButton appearance={{elements: {avatarBox: "w-12 h-12"}}}/>
+              <UserButton appearance={{elements: {avatarBox: "w-12 h-12",},}}>
+                <UserButton.MenuItems>
+                  <UserButton.Action label="Claim History" labelIcon={<History size={16} />} onClick={() => window.location.href = '/history'}/>
+                </UserButton.MenuItems>
+              </UserButton>
             </SignedIn>
           </div>
           <button className="lg:hidden text-3xl text-gray-800" onClick={() => setOpen(!open)}><i className={open ? "ri-close-line" : "ri-menu-line"}></i></button>
@@ -63,7 +77,11 @@ function Navbar() {
                         <p className="text-xs text-gray-500">{user?.primaryEmailAddress?.emailAddress}</p>
                       </div>
                     </div>
-                    <UserButton appearance={{elements:{avatarBox:"hidden"}}}/>
+                    <UserButton appearance={{elements: {avatarBox: "hidden",},}}>
+                      <UserButton.MenuItems>
+                        <UserButton.Action label="Claim History" labelIcon={<History size={16} />} onClick={() => {setOpen(false);window.location.href = "/history";}}/>
+                      </UserButton.MenuItems>
+                    </UserButton>
                   </div>
                 </div>
               </SignedIn>

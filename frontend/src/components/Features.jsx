@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import { Car, Home, HeartHandshake, ShieldCheck, ArrowRight, Sparkles,} from "lucide-react";
 import Footer from "./Footer";
+import { Car, Home, HeartHandshake, ShieldCheck, ArrowRight, Sparkles,} from "lucide-react";
 function Features() {
   const navigate = useNavigate();
   const InsuranceCard = ({icon: Icon,title,subtitle,features,path,}) => {
@@ -35,54 +35,54 @@ function Features() {
   };
   return (
     <>
-  <Navbar />
-  <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
-    <div className="absolute -top-44 -left-40 h-[450px] w-[450px] rounded-full bg-black/5 blur-[120px]" />
-    <div className="absolute top-80 -right-40 h-[400px] w-[400px] rounded-full bg-gray-400/10 blur-[130px]" />
-    <div className="absolute inset-0 opacity-[0.03]">
-      <div className="h-full w-full" style={{backgroundImage: `linear-gradient(to right,#000 1px,transparent 1px),linear-gradient(to bottom,#000 1px,transparent 1px)`,backgroundSize: "60px 60px",}}/>
-    </div>
-    <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24">
-      <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }} className="flex justify-center">
-        <div className="inline-flex items-center gap-3 rounded-full border bg-white px-6 py-3 shadow">
-          <Sparkles className="w-5 h-5" />
-          <span className="font-semibold">AI Powered Insurance Platform</span>
+      <Navbar />
+      <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="absolute -top-44 -left-40 h-[450px] w-[450px] rounded-full bg-black/5 blur-[120px]" />
+        <div className="absolute top-80 -right-40 h-[400px] w-[400px] rounded-full bg-gray-400/10 blur-[130px]" />
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="h-full w-full" style={{backgroundImage: `linear-gradient(to right,#000 1px,transparent 1px),linear-gradient(to bottom,#000 1px,transparent 1px)`,backgroundSize: "60px 60px",}}/>
         </div>
-      </motion.div>
-      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .8 }} viewport={{ once: true }} className="text-center mt-10">
-        <h1 className="text-5xl md:text-7xl font-black leading-tight">Intelligent Insurance<br /><span className="text-gray-500">Claim Solutions</span></h1>
-        <p className="mt-8 max-w-3xl mx-auto text-xl leading-9 text-gray-600">Experience next-generation AI claim automation across Car, Home and Term Life Insurance with intelligent document verification, fraud detection, vehicle inspection and seamless claim processing.</p>
-      </motion.div>
-      <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: .8 }} viewport={{ once: true }} className="mt-20 h-[2px] origin-left bg-gradient-to-r from-transparent via-black to-transparent"/>
-      <div className="mt-20 grid lg:grid-cols-3 gap-10">
-        <InsuranceCard icon={Car} title="Car Insurance" subtitle="AI-powered automobile insurance with intelligent vehicle verification, number plate validation, policy checking and fraud detection." path="/car" features={["Vehicle Verification","Number Plate Matching","Damage Assessment","Policy Validation","Fraud Detection","Instant Claim Processing",]}/>
-        <InsuranceCard icon={HeartHandshake} title="Term Life Insurance" subtitle="Automated life insurance claims with nominee verification, identity validation and AI-powered document processing." path="/life" features={["Nominee Verification","Identity Validation","Death Certificate Check","Policy Extraction","Fraud Prevention","Quick Settlement",]}/>
-        <InsuranceCard icon={Home} title="Home Insurance" subtitle="Intelligent home insurance claim automation with property verification, damage analysis and repair estimation." path="/home" features={["Property Verification","Damage Analysis","Ownership Validation","Repair Estimation","Fraud Detection","Automated Claims",]}/>
-      </div>
-      <motion.div initial={{ opacity: 0, y: 70 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="mt-28">
-        <div className="text-center">
-          <h2 className="text-4xl font-black">Trusted AI Platform</h2>
-          <p className="mt-4 text-lg text-gray-500">Delivering faster, smarter and more secure insurance claim processing powered by Artificial Intelligence.</p>
+        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24">
+          <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }} className="flex justify-center">
+            <div className="inline-flex items-center gap-3 rounded-full border bg-white px-6 py-3 shadow">
+              <Sparkles className="w-5 h-5" />
+              <span className="font-semibold">AI Powered Insurance Platform</span>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .8 }} viewport={{ once: true }} className="text-center mt-10">
+            <h1 className="text-5xl md:text-7xl font-black leading-tight">Intelligent Insurance<br /><span className="text-gray-500">Claim Solutions</span></h1>
+            <p className="mt-8 max-w-3xl mx-auto text-xl leading-9 text-gray-600">Experience next-generation AI claim automation across Car, Home and Term Life Insurance with intelligent document verification, fraud detection, vehicle inspection and seamless claim processing.</p>
+          </motion.div>
+          <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: .8 }} viewport={{ once: true }} className="mt-20 h-[2px] origin-left bg-gradient-to-r from-transparent via-black to-transparent"/>
+          <div className="mt-20 grid lg:grid-cols-3 gap-10">
+            <InsuranceCard icon={Car} title="Car Insurance" subtitle="AI-powered automobile insurance with intelligent vehicle verification, number plate validation, policy checking and fraud detection." path="/car" features={["Vehicle Verification","Number Plate Matching","Damage Assessment","Policy Validation","Fraud Detection","Instant Claim Processing",]}/>
+            <InsuranceCard icon={HeartHandshake} title="Term Life Insurance" subtitle="Automated life insurance claims with nominee verification, identity validation and AI-powered document processing." path="/life" features={["Nominee Verification","Identity Validation","Death Certificate Check","Policy Extraction","Fraud Prevention","Quick Settlement",]}/>
+            <InsuranceCard icon={Home} title="Home Insurance" subtitle="Intelligent home insurance claim automation with property verification, damage analysis and repair estimation." path="/home" features={["Property Verification","Damage Analysis","Ownership Validation","Repair Estimation","Fraud Detection","Automated Claims",]}/>
+          </div>
+          <motion.div initial={{ opacity: 0, y: 70 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="mt-28">
+            <div className="text-center">
+              <h2 className="text-4xl font-black">Trusted AI Platform</h2>
+              <p className="mt-4 text-lg text-gray-500">Delivering faster, smarter and more secure insurance claim processing powered by Artificial Intelligence.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
+              {[
+                {number: "10K+",title: "Claims Processed",desc: "Successfully verified insurance claims."},
+                {number: "99.8%",title: "Verification Accuracy",desc: "High confidence AI verification."},
+                {number: "<30s",title: "Average Processing",desc: "Complete verification within seconds."},
+                {number: "24×7",title: "AI Assistance",desc: "Always available whenever you need."}
+              ].map((item, index) => (
+                <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{delay: index * 0,duration: 0.6,}} whileHover={{y: -12,scale: 1.04,}} viewport={{ once: true }} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-black hover:shadow-2xl">
+                  <h2 className="text-5xl font-black">{item.number}</h2>
+                  <h3 className="mt-5 text-xl font-bold">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-gray-500">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
-          {[
-            {number: "10K+",title: "Claims Processed",desc: "Successfully verified insurance claims."},
-            {number: "99.8%",title: "Verification Accuracy",desc: "High confidence AI verification."},
-            {number: "<30s",title: "Average Processing",desc: "Complete verification within seconds."},
-            {number: "24×7",title: "AI Assistance",desc: "Always available whenever you need."}
-          ].map((item, index) => (
-            <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{delay: index * 0,duration: 0.6,}} whileHover={{y: -12,scale: 1.04,}} viewport={{ once: true }} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-black hover:shadow-2xl">
-              <h2 className="text-5xl font-black">{item.number}</h2>
-              <h3 className="mt-5 text-xl font-bold">{item.title}</h3>
-              <p className="mt-3 leading-7 text-gray-500">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
-  </section>
-  <Footer />
-</>
+      </section>
+      <Footer />
+    </>
   );
 }
 
