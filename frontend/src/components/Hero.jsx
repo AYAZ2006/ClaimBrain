@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import BotpressChat from "./ChatBot";
 const cards = [
   {title: "Home Insurance",image: "/home_desktop_off.27a2c041.svg",},
   {title: "Car Insurance",image: "/car_desktop_off.6ed28b9d.svg",},
@@ -11,6 +12,7 @@ function Hero() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
+      <BotpressChat/>
       <div className="hidden lg:flex justify-between items-end px-12 pt-32 mt-24">
         <motion.div className="relative w-fit -left-12" initial={{ opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{duration: 1.8,ease: [0.16, 1, 0.3, 1]}}>
           <img src="/home-left.2fe38685.svg" alt=""/>

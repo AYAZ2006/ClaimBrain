@@ -1,806 +1,174 @@
-import React from "react";
+import React, { useState } from "react";
+import {Upload,BrainCircuit,ShieldAlert,BadgeCheck,Wallet,ShieldCheck,Car,Home,HeartHandshake,Target,Eye,ArrowRight,Sparkles,CheckCircle2,Cpu,ChevronDown} from "lucide-react";
 import Navbar from "./Navbar";
-import { motion } from "framer-motion";
-import { BrainCircuit, ArrowDown } from "lucide-react";
-
+import Footer from "./Footer";
+import BotpressChat from "./ChatBot";
+import KineticText from "./KineticText";
+import { motion, AnimatePresence } from "framer-motion";
 function About() {
+  const [openFAQ, setOpenFAQ] = useState(0);
+  const insuranceData = [
+    {
+      icon: Car,
+      title: "Car Insurance",
+      description: "Our AI-powered automobile insurance platform simplifies the entire claims process. From vehicle verification to intelligent damage assessment, every claim is processed faster with advanced automation.",
+      features: ["Vehicle Verification","Number Plate Detection","Damage Assessment","Policy Validation",],
+    },
+    {
+      icon: Home,
+      title: "Home Insurance",
+      description: "Protect your home against unexpected events with intelligent property verification, ownership validation, and automated damage estimation powered by Artificial Intelligence.",
+      features: ["Property Verification","Disaster Protection","Ownership Validation","Repair Estimation",],
+    },
+    {
+      icon: HeartHandshake,
+      title: "Health Insurance",
+      description: "Experience seamless healthcare claim management with secure document verification, medical record validation, and instant claim assistance.",
+      features: ["Medical Verification","Hospital Network","Cashless Claims","Secure Records",],
+    },
+  ];
   return (
     <>
       <Navbar />
-
-      <section className="relative min-h-screen overflow-hidden bg-white">
-
-        {/* Background Blobs */}
-
-        <motion.div
-          animate={{
-            x: [0, 80, -20, 0],
-            y: [0, -40, 30, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-          }}
-          className="absolute -top-40 -left-40 h-[550px] w-[550px] rounded-full bg-gray-200/50 blur-[140px]"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, -70, 30, 0],
-            y: [0, 60, -20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-          }}
-          className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-pink-100/40 blur-[150px]"
-        />
-
-        <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6">
-
-          {/* Badge */}
-
-          <motion.div
-
-            initial={{ opacity: 0, y: 40 }}
-
-            animate={{ opacity: 1, y: 0 }}
-
-            transition={{ duration: .8 }}
-
-            className="mb-10"
-
-          >
-
-            <div className="inline-flex items-center gap-3 rounded-full border border-gray-300 bg-gray-100 px-6 py-3">
-
-              <BrainCircuit
-                size={20}
-                className="text-pink-500"
-              />
-
-              <span className="font-medium text-gray-700">
-
-                AI Powered Insurance Claims
-
-              </span>
-
-            </div>
-
-          </motion.div>
-                    <motion.h1
-
-            initial={{ opacity: 0, y: 50 }}
-
-            animate={{ opacity: 1, y: 0 }}
-
-            transition={{
-              delay: .2,
-              duration: .8,
-            }}
-
-            className="max-w-6xl text-6xl md:text-8xl lg:text-[110px] font-black tracking-[-4px] leading-[0.95] text-gray-900"
-
-          >
-
-            Insurance
-
-            <br />
-
-            claims should
-
-            <br />
-
-            take
-
-            <span className="text-pink-500">
-
-              {" "}minutes.
-
-            </span>
-
-          </motion.h1>
-
-          <motion.p
-
-            initial={{ opacity: 0 }}
-
-            animate={{ opacity: 1 }}
-
-            transition={{
-              delay: .6,
-            }}
-
-            className="mt-14 max-w-3xl text-xl leading-10 text-gray-600"
-
-          >
-
-            ClaimBrain combines OCR,
-            Computer Vision,
-            Artificial Intelligence
-            and Large Language Models
-            into one intelligent platform
-            that automates insurance policy verification,
-            vehicle inspection,
-            damage analysis
-            and claim prediction.
-
-          </motion.p>
-                    <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.9,
-              duration: 0.8,
-            }}
-            className="mt-24 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between"
-          >
-            <div className="max-w-lg">
-
-              <div className="flex items-center gap-3">
-
-                <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></div>
-
-                <span className="text-sm font-semibold uppercase tracking-[4px] text-gray-500">
-
-                  Ready for Production
-
-                </span>
-
-              </div>
-
-              <p className="mt-6 text-lg leading-9 text-gray-600">
-
-                Built for Insurance Companies,
-                Surveyors and Claim Processing Teams.
-
-              </p>
-
-            </div>
-
-            <div className="flex items-center gap-6">
-
-              <motion.div
-                animate={{
-                  y: [0, 12, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-                className="flex h-16 w-16 items-center justify-center rounded-full border border-gray-300 bg-white shadow-sm"
-              >
-                <ArrowDown
-                  className="text-gray-700"
-                  size={26}
-                />
-              </motion.div>
-
+      <BotpressChat />
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="absolute -top-44 -left-40 h-[450px] w-[450px] rounded-full bg-black/5 blur-[120px]" />
+        <div className="absolute top-80 -right-40 h-[400px] w-[400px] rounded-full bg-gray-400/10 blur-[130px]" />
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="h-full w-full" style={{backgroundImage: `linear-gradient(to right,#000 1px,transparent 1px),linear-gradient(to bottom,#000 1px,transparent 1px)`,backgroundSize: "60px 60px",}}/>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24">
+          <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} viewport={{ once: true }} className="flex justify-center">
+            <div className="inline-flex items-center gap-3 rounded-full border bg-white px-6 py-3 shadow">
+              <Sparkles className="h-5 w-5" />
+              <span className="font-semibold">About Our AI Insurance Platform</span>
             </div>
           </motion.div>
-
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .8 }} viewport={{ once: true }} className="mt-10 text-center">
+            <div className="text-center">
+            <KineticText text="Protecting What" className="text-5xl md:text-7xl font-black"/>
+            <KineticText text="Matters Most" className="mt-2 text-5xl md:text-7xl font-black text-gray-500"/>
+            </div>
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-gray-600"> We combine Artificial Intelligence with modern insurance technology to deliver faster verification, smarter fraud detection, secure policy management, and seamless claim processing for millions of customers.</p>
+          </motion.div>
+          <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: .8 }} viewport={{ once: true }} className="mt-20 h-[2px] origin-left bg-gradient-to-r from-transparent via-black to-transparent"/>
+          <motion.div initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .8 }} viewport={{ once: true }} className="mt-24 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <KineticText as="h2" text="Who We Are" className="justify-start text-5xl font-black"/>
+              <p className="mt-8 text-lg leading-9 text-gray-600"> We are building the next generation insurance ecosystem where Artificial Intelligence makes claim verification simple, transparent, and highly accurate.</p>
+              <p className="mt-6 text-lg leading-9 text-gray-600"> Our platform minimizes paperwork, reduces fraudulent claims, automates document validation, and significantly improves claim settlement speed while ensuring complete customer trust.</p>
+              <button className="mt-10 flex items-center gap-3 rounded-2xl bg-black px-7 py-4 text-white">Learn More<ArrowRight size={20} />
+              </button>
+            </div>
+            <motion.div whileHover={{ scale: 1.03 }} className="rounded-[40px] border border-gray-200 bg-white p-10 shadow-sm">
+              <Cpu className="h-14 w-14" />
+              <KineticText as="h3" text="AI Powered Verification" className="mt-8 justify-start text-3xl font-black"/>
+              <p className="mt-5 leading-8 text-gray-600"> Our intelligent algorithms analyze policy documents, vehicle images, identity proofs and damage reports to deliver accurate insurance decisions within seconds.</p>
+            </motion.div>
+          </motion.div>
+          <div className="mt-28 grid lg:grid-cols-2 gap-10">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} viewport={{ once: true }} className="rounded-[32px] border border-gray-200 bg-white p-10 shadow-sm">
+              <Target className="h-12 w-12" />
+              <KineticText as="h2" text="Our Mission" className="mt-6 justify-start text-3xl font-black tracking-tight"/>
+              <p className="mt-6 leading-8 text-gray-600"> To revolutionize insurance claim processing through Artificial Intelligence by delivering secure, transparent, and lightning-fast verification that benefits both insurers and policyholders.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} viewport={{ once: true }} className="rounded-[32px] border border-gray-200 bg-white p-10 shadow-sm">
+              <Eye className="h-12 w-12" />
+              <KineticText as="h2" text="Our Vision" className="mt-6 justify-start text-3xl font-black tracking-tight"/>
+              <p className="mt-6 leading-8 text-gray-600"> To become the world's most trusted AI-powered insurance platform by making every insurance claim faster, fairer, smarter and completely digital.</p>
+            </motion.div>
+          </div>          
+          <motion.div initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} viewport={{ once: true }} className="mt-32">
+            <div className="text-center">
+              <KineticText as="h2" text="Why Choose Us" className="justify-center text-5xl font-black tracking-tight"/>
+              <p className="mt-5 text-lg text-gray-500">Intelligent technology combined with reliable insurance services to deliver a seamless experience.</p>
+            </div>
+            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {title: "AI Verification",desc: "Advanced AI verifies documents and images with exceptional accuracy."},
+                {title: "Instant Claims",desc: "Reduce claim settlement time from days to minutes."},
+                {title: "Fraud Detection",desc: "Smart algorithms identify suspicious claims automatically."},
+                {title: "Secure Platform",desc: "Enterprise-grade encryption protects your information."},
+                {title: "24×7 Support",desc: "Round-the-clock assistance whenever you need help."},
+                {title: "Paperless Experience",desc: "Completely digital claim submission and tracking."}
+              ].map((item, index) => (
+                <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{delay: index * .08,duration: .5}} whileHover={{y: -10,scale: 1.03}} viewport={{ once: true }} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm hover:border-black hover:shadow-xl">
+                  <ShieldCheck className="h-10 w-10" />
+                  <h3 className="mt-6 text-2xl font-bold">{item.title}</h3>
+                  <p className="mt-4 leading-8 text-gray-600">{item.desc}</p>
+                </motion.div>
+              ))}
+          </div>
+        </motion.div>
+        <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="mt-36">
+        <div className="text-center">
+            <span className="rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-semibold shadow-sm">AI Claim Workflow</span>
+            <KineticText as="h2" text="From Upload to Settlement" className="mt-6 justify-center text-5xl font-black tracking-tight"/>
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-gray-500"> Every claim passes through an intelligent verification pipeline that minimizes manual work, detects fraud, and accelerates approvals with exceptional accuracy.</p>
+        </div>
+        <div className="relative mt-24">
+            <div className="absolute left-0 right-0 top-12 hidden h-[2px] bg-gray-200 lg:block" />
+            <div className="grid gap-10 lg:grid-cols-5">
+            {[
+                {icon: Upload,step: "01",title: "Upload",desc: "Submit policy documents and supporting images securely."},
+                {icon: BrainCircuit,step: "02",title: "AI Analysis",desc: "Our AI extracts policy details and validates every document."},
+                {icon: ShieldAlert,step: "03",title: "Fraud Detection",desc: "Advanced models detect inconsistencies and suspicious activity."},
+                {icon: BadgeCheck,step: "04",title: "Verification",desc: "Coverage, eligibility and claim details are automatically verified."},
+                {icon: Wallet,step: "05",title: "Settlement",desc: "Approved claims move directly to fast and transparent settlement."},
+            ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                <motion.div key={index} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{delay: index * 0.12,duration: 0.6,}} whileHover={{y: -10,}} viewport={{ once: true }} className="relative text-center">
+                    <div className="relative z-10 mx-auto flex h-24 w-24 items-center justify-center rounded-full border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:bg-black hover:text-white">
+                    <Icon size={34} />
+                    <span className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-bold text-white">{item.step}</span>
+                    </div>
+                    <div className="mt-8 rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl">
+                    <h3 className="text-2xl font-bold">{item.title}</h3>
+                    <p className="mt-4 leading-8 text-gray-600">{item.desc}</p>
+                    </div>
+                </motion.div>
+                );
+            })}
+            </div>
+        </div>
+        </motion.section>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="mt-32">
+        <div className="text-center">
+            <KineticText as="h2" text="Frequently Asked Questions" className="justify-center text-5xl font-black tracking-tight"/>
+            <p className="mt-5 text-lg text-gray-500">Everything you need to know about our insurance platform.</p>
+        </div>
+        <div className="mx-auto mt-16 max-w-4xl space-y-5">
+            {[
+            {q: "What insurance services do you provide?",a: "We provide AI-powered Car Insurance, Home Insurance, and Health Insurance with intelligent document verification, fraud detection, and automated claim processing.",},
+            {q: "How does AI verify insurance claims?",a: "Our AI analyzes uploaded documents, vehicle or property images, policy details, and identity information to verify claims accurately while reducing manual effort.",},
+            {q: "Is my information secure?",a: "Yes. All customer data is encrypted using industry-standard security practices. Your personal information and uploaded documents remain protected throughout the claim process.",},
+            {q: "How long does claim verification take?",a: "Most verifications are completed within seconds. More complex claims may require additional review before approval.",},
+            {q: "Can I track my claim status?",a: "Absolutely. You can monitor your claim from document submission to final settlement through our platform.",},
+            ].map((item, index) => (
+            <motion.div key={index} layout transition={{layout: {duration: 0.35,ease: "easeInOut",},}} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+                <button onClick={() => setOpenFAQ(openFAQ === index ? -1 : index)} className="flex w-full items-center justify-between px-7 py-6 text-left">
+                <span className="text-lg font-semibold">{item.q}</span>
+                <motion.div animate={{rotate: openFAQ === index ? 180 : 0,}} transition={{duration: 0.3,}}>
+                    <ChevronDown className="h-6 w-6 text-gray-500" />
+                </motion.div>
+                </button>
+                <AnimatePresence initial={false}>
+                {openFAQ === index && (
+                    <motion.div key="content" initial={{height: 0,opacity: 0,}} animate={{height: "auto",opacity: 1,}} exit={{height: 0,opacity: 0,}} transition={{height: {duration: 0.35,ease: "easeInOut",},opacity: {duration: 0.25,},}} className="overflow-hidden">
+                    <div className="border-t border-gray-100 px-7 py-6 text-gray-600 leading-8">{item.a}</div>
+                    </motion.div>
+                )}
+                </AnimatePresence>
+            </motion.div>
+            ))}
+        </div>
+        </motion.div>
         </div>
       </section>
-
-      <section className="overflow-hidden border-y bg-gray-50 py-7">
-
-  <motion.div
-
-    animate={{
-      x: ["0%", "-50%"],
-    }}
-
-    transition={{
-      duration: 22,
-      repeat: Infinity,
-      ease: "linear",
-    }}
-
-    className="flex w-max gap-24 whitespace-nowrap"
-
-  >
-
-    {[
-      "AI Powered Claims",
-      "OCR Verification",
-      "YOLO Damage Detection",
-      "Policy Parsing",
-      "Vehicle Verification",
-      "Repair Cost Estimation",
-      "Fraud Detection",
-      "Claim Prediction",
-      "Computer Vision",
-      "Large Language Models",
-      "AI Powered Claims",
-      "OCR Verification",
-      "YOLO Damage Detection",
-      "Policy Parsing",
-      "Vehicle Verification",
-      "Repair Cost Estimation",
-    ].map((item, index) => (
-
-      <div
-        key={index}
-        className="flex items-center gap-5 px-4"
-      >
-
-        <div className="h-2 w-2 rounded-full bg-pink-500" />
-
-        <span className="text-lg font-semibold text-gray-700">
-
-          {item}
-
-        </span>
-
-      </div>
-
-    ))}
-
-  </motion.div>
-
-</section>
-{/* WHY CLAIMBRAIN */}
-
-<section className="py-40 bg-white">
-
-  <div className="max-w-7xl mx-auto px-6">
-
-    <div className="grid lg:grid-cols-2 gap-24 items-center">
-
-      <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: .8 }}
-      >
-
-        <p className="uppercase tracking-[5px] text-gray-400 mb-6">
-
-          WHY CLAIMBRAIN
-
-        </p>
-
-        <h2 className="text-6xl lg:text-7xl font-black leading-tight text-gray-900">
-
-          Smarter
-          <br />
-
-          Claims.
-
-          <br />
-
-          Less Manual
-          <br />
-
-          Work.
-
-        </h2>
-
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: .8 }}
-      >
-
-        <p className="text-xl leading-10 text-gray-600">
-
-          ClaimBrain automates the complete insurance
-          claim workflow by understanding insurance
-          documents, verifying vehicles, detecting
-          damages and predicting repair costs.
-
-        </p>
-
-        <p className="mt-10 text-xl leading-10 text-gray-600">
-
-          Instead of spending hours manually
-          reviewing policies and photographs,
-          insurance companies receive structured,
-          AI-generated insights within minutes.
-
-        </p>
-
-      </motion.div>
-
-    </div>
-
-  </div>
-
-</section>
-{/* FEATURES */}
-
-<section className="py-32 bg-gray-50 border-y">
-
-<div className="max-w-7xl mx-auto px-6">
-
-<h2 className="text-6xl font-black mb-20">
-
-Everything.
-One Platform.
-
-</h2>
-
-<div className="grid lg:grid-cols-2 gap-8">
-
-{[
-{
-title:"Policy Verification",
-desc:"OCR extracts every important insurance detail automatically."
-},
-{
-title:"Vehicle Verification",
-desc:"Verify uploaded vehicle images using AI."
-},
-{
-title:"Damage Detection",
-desc:"YOLO identifies damaged vehicle parts with confidence scores."
-},
-{
-title:"Coverage Validation",
-desc:"Compare detected damages with insurance coverage."
-},
-{
-title:"Repair Estimation",
-desc:"Estimate repair costs using predefined databases."
-},
-{
-title:"Claim Prediction",
-desc:"Predict the expected insurance claim amount."
-},
-].map((feature,index)=>(
-
-<motion.div
-
-key={index}
-
-initial={{opacity:0,y:40}}
-
-whileInView={{opacity:1,y:0}}
-
-viewport={{once:true}}
-
-transition={{delay:index*.08}}
-
-whileHover={{
-y:-8,
-scale:1.02
-}}
-
-className="rounded-3xl border bg-white p-10"
-
->
-
-<div className="flex justify-between items-start">
-
-<h3 className="text-3xl font-bold">
-
-{feature.title}
-
-</h3>
-
-<div className="h-12 w-12 rounded-full bg-pink-100 flex items-center justify-center">
-
-<div className="h-3 w-3 rounded-full bg-pink-500"/>
-
-</div>
-
-</div>
-
-<p className="mt-8 text-lg leading-9 text-gray-600">
-
-{feature.desc}
-
-</p>
-
-</motion.div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-{/* JOURNEY */}
-
-<section className="py-40 bg-white">
-
-  <div className="max-w-7xl mx-auto px-6">
-
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-    >
-
-      <p className="uppercase tracking-[6px] text-gray-400 mb-6">
-
-        AI JOURNEY
-
-      </p>
-
-      <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-24">
-
-        From Upload
-        <br />
-
-        to Settlement
-
-      </h2>
-
-    </motion.div>
-
-    {[
-      {
-        no: "01",
-        title: "Upload Insurance Policy",
-        desc: "Users upload their insurance policy PDF which becomes the foundation for the complete verification process."
-      },
-      {
-        no: "02",
-        title: "AI Understands Documents",
-        desc: "OCR and LLM models extract policy holder details, vehicle information and policy validity."
-      },
-      {
-        no: "03",
-        title: "Vehicle Verification",
-        desc: "Vehicle images are matched against policy information to ensure authenticity."
-      },
-      {
-        no: "04",
-        title: "Damage Analysis",
-        desc: "YOLO models identify damaged vehicle parts and classify every detected damage."
-      },
-      {
-        no: "05",
-        title: "Claim Prediction",
-        desc: "Repair cost estimation and policy coverage are combined to estimate the expected claim amount."
-      }
-
-    ].map((step,index)=>(
-
-      <motion.div
-
-        key={index}
-
-        initial={{opacity:0,y:70}}
-
-        whileInView={{opacity:1,y:0}}
-
-        viewport={{once:true}}
-
-        transition={{delay:index*.08}}
-
-        className="grid lg:grid-cols-12 gap-8 border-t py-14"
-
-      >
-
-        <div className="lg:col-span-2">
-
-          <h1 className="text-7xl font-black text-pink-500">
-
-            {step.no}
-
-          </h1>
-
-        </div>
-
-        <div className="lg:col-span-4">
-
-          <h2 className="text-4xl font-bold">
-
-            {step.title}
-
-          </h2>
-
-        </div>
-
-        <div className="lg:col-span-6">
-
-          <p className="text-lg leading-9 text-gray-600">
-
-            {step.desc}
-
-          </p>
-
-        </div>
-
-      </motion.div>
-
-    ))}
-
-  </div>
-
-</section>
-{/* STATS */}
-
-<section className="py-36 bg-gray-900">
-
-<div className="max-w-7xl mx-auto px-6">
-
-<div className="grid lg:grid-cols-4 gap-12">
-
-{[
-["90%","Faster Processing"],
-["98%","Detection Accuracy"],
-["24/7","AI Availability"],
-["100+","Vehicle Parts"]
-].map((item,index)=>(
-
-<motion.div
-
-key={index}
-
-initial={{opacity:0,y:60}}
-
-whileInView={{opacity:1,y:0}}
-
-viewport={{once:true}}
-
-transition={{delay:index*.1}}
-
-whileHover={{
-y:-12
-}}
-
-className="text-center"
-
->
-
-<h1 className="text-7xl font-black text-white">
-
-{item[0]}
-
-</h1>
-
-<div className="mx-auto mt-8 h-px w-20 bg-pink-500"/>
-
-<p className="mt-8 text-xl text-gray-300">
-
-{item[1]}
-
-</p>
-
-</motion.div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-{/* FUTURE */}
-
-<section className="py-44 bg-white">
-
-  <div className="max-w-7xl mx-auto px-6">
-
-    <motion.div
-
-      initial={{ opacity:0,y:60 }}
-
-      whileInView={{ opacity:1,y:0 }}
-
-      viewport={{ once:true }}
-
-    >
-
-      <p className="uppercase tracking-[6px] text-gray-400 mb-6">
-
-        THE FUTURE
-
-      </p>
-
-      <h2 className="max-w-6xl text-6xl lg:text-8xl font-black leading-[1] text-gray-900">
-
-        Insurance claims
-        shouldn't depend
-        on paperwork.
-
-      </h2>
-
-      <div className="grid lg:grid-cols-2 gap-20 mt-20">
-
-        <p className="text-xl leading-10 text-gray-600">
-
-          ClaimBrain replaces repetitive manual
-          verification with intelligent automation.
-          Every uploaded document and vehicle image
-          is analyzed using Artificial Intelligence,
-          enabling insurers to process claims
-          significantly faster without compromising
-          accuracy.
-
-        </p>
-
-        <p className="text-xl leading-10 text-gray-600">
-
-          Our vision is to build an ecosystem where
-          policy verification, damage assessment,
-          fraud detection and claim settlement
-          happen seamlessly with AI assistance.
-
-        </p>
-
-      </div>
-
-    </motion.div>
-
-  </div>
-
-</section>
-{/* CTA */}
-
-<section className="py-40 bg-gray-50 border-y">
-
-<div className="max-w-7xl mx-auto px-6">
-
-<motion.div
-
-initial={{opacity:0,y:50}}
-
-whileInView={{opacity:1,y:0}}
-
-viewport={{once:true}}
-
-className="rounded-[40px] border bg-white p-20"
-
->
-
-<h2 className="text-6xl lg:text-7xl font-black leading-tight max-w-5xl">
-
-Experience AI
-powered vehicle
-insurance claims.
-
-</h2>
-
-<p className="mt-10 max-w-3xl text-xl leading-10 text-gray-600">
-
-Upload your insurance policy,
-verify vehicle images,
-detect damages,
-estimate repair costs
-and predict claim amount
-using ClaimBrain AI.
-
-</p>
-
-<div className="mt-16 flex flex-wrap gap-6">
-
-<a
-
-href="/car"
-
-className="rounded-xl bg-black px-8 py-4 text-white font-semibold hover:bg-gray-800 transition"
-
->
-
-Start Verification →
-
-</a>
-
-<a
-
-href="/features"
-
-className="rounded-xl border px-8 py-4 font-semibold hover:bg-gray-100 transition"
-
->
-
-Explore Features
-
-</a>
-
-</div>
-
-</motion.div>
-
-</div>
-
-</section>
-<footer className="bg-white py-16">
-
-<div className="max-w-7xl mx-auto px-6">
-
-<div className="grid lg:grid-cols-3 gap-16">
-
-<div>
-
-<h2 className="text-4xl font-black">
-
-Claim
-<span className="text-pink-500">
-
-Brain
-
-</span>
-
-</h2>
-
-<p className="mt-6 leading-8 text-gray-600">
-
-AI Powered Vehicle Insurance
-Claim Automation Platform.
-
-</p>
-
-</div>
-
-<div>
-
-<h3 className="font-bold text-xl mb-6">
-
-Navigation
-
-</h3>
-
-<div className="space-y-4 text-gray-500">
-
-<p><a href="/">Home</a></p>
-
-<p><a href="/features">Features</a></p>
-
-<p><a href="/car">Claims</a></p>
-
-<p><a href="/about">About</a></p>
-
-</div>
-
-</div>
-
-<div>
-
-<h3 className="font-bold text-xl mb-6">
-
-Technology
-
-</h3>
-
-<div className="space-y-4 text-gray-500">
-
-<p>OCR</p>
-
-<p>YOLO</p>
-
-<p>Computer Vision</p>
-
-<p>Large Language Models</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div className="mt-16 border-t pt-10 flex flex-col md:flex-row justify-between items-center">
-
-<p className="text-gray-500">
-
-© 2026 ClaimBrain. All rights reserved.
-
-</p>
-
-<p className="text-gray-400 mt-4 md:mt-0">
-
-Built with React • Tailwind CSS • Framer Motion
-
-</p>
-
-</div>
-
-</div>
-
-</footer>
-
-</>
-
-);
-
+      <Footer />
+    </>
+  );
 }
 
 export default About;

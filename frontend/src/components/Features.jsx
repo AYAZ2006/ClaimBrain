@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import BotpressChat from "./ChatBot";
 import { Car, Home, HeartHandshake, ShieldCheck, ArrowRight, Sparkles,} from "lucide-react";
 function Features() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function Features() {
   return (
     <>
       <Navbar />
+      <BotpressChat/>
       <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="absolute -top-44 -left-40 h-[450px] w-[450px] rounded-full bg-black/5 blur-[120px]" />
         <div className="absolute top-80 -right-40 h-[400px] w-[400px] rounded-full bg-gray-400/10 blur-[130px]" />
