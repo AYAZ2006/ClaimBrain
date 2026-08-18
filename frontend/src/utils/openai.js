@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-// Groq API
+
 const client = new OpenAI({
   apiKey: import.meta.env.VITE_GROQ_API_KEY,
   baseURL: "https://api.groq.com/openai/v1",
@@ -11,16 +11,13 @@ const openrouter = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   dangerouslyAllowBrowser: true,
 });
-// =======================================
-// POLICY PARSER
-// =======================================
 
 export async function parsePolicy(text) {
 
   const policyText = text.slice(0, 12000);
 
   const response = await client.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
 
     temperature: 0,
 
