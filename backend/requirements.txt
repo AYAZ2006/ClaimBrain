@@ -4,3 +4,7 @@ django-cors-headers
 gunicorn
 psycopg2-binary
 opencv-python-headless
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+ultralytics
