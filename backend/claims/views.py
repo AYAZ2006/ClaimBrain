@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from ultralytics import YOLO
 from .models import User
 MODEL_PATH = os.path.join(settings.BASE_DIR, "Models", "best.pt")
-model = YOLO(MODEL_PATH)
+model = None
 
 class UserCreateView(APIView):
     def post(self, request):
@@ -24,6 +24,10 @@ class UserCreateView(APIView):
 
 class CarDamageAnalysisView(APIView):
     def post(self, request):
+        global model
+        if model is None:
+            MODEL_PATH = os.path.join(settings.BASE_DIR, "Models", "best.pt")
+            model = YOLO(MODEL_PATH)
         if "image" not in request.FILES:
             return Response({"error": "No image provided"},status=status.HTTP_400_BAD_REQUEST,)
         image_file = request.FILES["image"]
