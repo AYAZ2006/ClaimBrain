@@ -7,13 +7,15 @@ import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { parsePolicy } from "../utils/openai";
 import AILoader from "./AILoader";
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
-
+import { useNavigate } from "react-router-dom";
 function Car() {
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [progress, setProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [policyData, setPolicyData] = useState({});
+  const [policyRawText, setPolicyRawText] = useState("");
   const extractTextFromPDF = async (file) => {
     setIsUploading(true);
     setIsProcessing(false);
@@ -36,6 +38,7 @@ function Car() {
           alert("Scanned PDF detected. OCR is required.");
           return;
         }
+        setPolicyRawText(fullText);
         setIsProcessing(true);
       const minimumLoaderTime = 10000;
       const startTime = Date.now();
@@ -278,7 +281,8 @@ function Car() {
             <div className="px-8 pb-8 flex justify-end gap-4">
               <button onClick={removeFile} className="px-6 py-3 cursor-pointer rounded-xl border hover:bg-gray-100">Upload Another PDF</button>
               {policyActive ? (
-                <a href="/claim-verify" className="px-8 py-3 rounded-xl bg-black hover:bg-gray-800 text-white font-semibold no-underline">Continue to Claim Verification →</a>) : (
+                <button onClick={() => navigate("/claim-verify", {state: {policyText: policyRawText,policyData: policyData,},})} className="px-8 py-3 rounded-xl bg-black hover:bg-gray-800 text-white font-semibold cursor-pointer">Continue to Claim Verification →</button>
+              ) : (
                 <button disabled className="px-8 py-3 rounded-xl bg-gray-400 text-white font-semibold cursor-not-allowed" title="This policy has expired">Policy Expired</button>
               )}
             </div>

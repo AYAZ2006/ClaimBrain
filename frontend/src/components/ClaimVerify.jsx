@@ -6,9 +6,13 @@ import { verifyVehicleImage } from "../utils/openai";
 import toast from "react-hot-toast";
 import Lottie from "lottie-react";
 import carAnimation from "../assets/carr.json";
+import { useLocation, useNavigate } from "react-router-dom";
 function ClaimVerify() {
-
-  const policyVehicleNumber = "REVTRN20JUXMH3219";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const policyText = location.state?.policyText || null;
+  const policyData = location.state?.policyData || {};
+  const policyVehicleNumber = policyData.vehicleNumber || "UNKNOWN";
   const [images, setImages] = useState({front: null,rear: null,left: null,right: null,});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -175,7 +179,7 @@ function ClaimVerify() {
           </div>
           <div className="mt-10 flex justify-end gap-4">
             <button className="px-6 py-3 border rounded-xl hover:bg-gray-100 cursor-pointer" onClick={() => window.history.back()}>Back</button>
-            <button disabled={!completed} className={`px-8 py-3 rounded-xl font-semibold transition ${completed ? "bg-black text-white hover:bg-gray-800 cursor-pointer" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`} onClick={() => window.location.href = "/parts"}>Continue →</button>
+            <button disabled={!completed} className={`px-8 py-3 rounded-xl font-semibold transition ${completed ? "bg-black text-white hover:bg-gray-800 cursor-pointer" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`} onClick={() => navigate("/parts", { state: { images, policyText } })}>Continue →</button>
           </div>
         </div>
       </div>
