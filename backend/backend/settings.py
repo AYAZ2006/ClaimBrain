@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-)whihpy@-o+7z8dp1x0t%4a$yg#*#y_%(b)qacsrgra2@*d57)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".vercel.app",
+]
 
 
 # Application definition
@@ -116,6 +120,7 @@ USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://claim-brain.vercel.app/"
 ]
 
 # Static files (CSS, JavaScript, Images)
